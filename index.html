@@ -1,0 +1,1530 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Les Templiers</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%B9%3C/text%3E%3C/svg%3E">
+<style>[hidden]{display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F1F4F1;
+  --bg-tex:#EAEFEA;
+  --surface:#FFFFFF;
+  --surface-2:#E8EDE8;
+  --border:#D7DED7;
+  --text:#1B2420;
+  --text-muted:#5B665F;
+  --accent:#3E7C74;
+  --accent-ink:#FFFFFF;
+  --accent-soft:#DCEAE7;
+  --gold:#9C6B1F;
+  --gold-soft:#F3E6CC;
+  --success:#2F7A4F;
+  --success-soft:#E1F2E7;
+  --warning:#A8631A;
+  --warning-soft:#F8E9D4;
+  --info:#5B4FA0;
+  --info-soft:#EAE6F5;
+  --danger:#A23E37;
+  --danger-soft:#F6E2E0;
+  --shadow:rgba(20,30,25,0.10);
+  --focus:#2E6B63;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141917;
+    --bg-tex:#1A211D;
+    --surface:#1C2320;
+    --surface-2:#232B27;
+    --border:#2E3733;
+    --text:#E7EEEA;
+    --text-muted:#9DAAA3;
+    --accent:#6FBDB0;
+    --accent-ink:#0C1614;
+    --accent-soft:#1E3733;
+    --gold:#D9A857;
+    --gold-soft:#3A2F1B;
+    --success:#6FCB8F;
+    --success-soft:#1C3327;
+    --warning:#E3A85C;
+    --warning-soft:#3A2C18;
+    --info:#A99BE0;
+    --info-soft:#2A2540;
+    --danger:#E08A82;
+    --danger-soft:#3A211F;
+    --shadow:rgba(0,0,0,0.4);
+    --focus:#6FBDB0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141917;
+  --bg-tex:#1A211D;
+  --surface:#1C2320;
+  --surface-2:#232B27;
+  --border:#2E3733;
+  --text:#E7EEEA;
+  --text-muted:#9DAAA3;
+  --accent:#6FBDB0;
+  --accent-ink:#0C1614;
+  --accent-soft:#1E3733;
+  --gold:#D9A857;
+  --gold-soft:#3A2F1B;
+  --success:#6FCB8F;
+  --success-soft:#1C3327;
+  --warning:#E3A85C;
+  --warning-soft:#3A2C18;
+  --info:#A99BE0;
+  --info-soft:#2A2540;
+  --danger:#E08A82;
+  --danger-soft:#3A211F;
+  --shadow:rgba(0,0,0,0.4);
+  --focus:#6FBDB0;
+  color-scheme: dark;
+}
+</style>
+<style>
+* { box-sizing: border-box; }
+html { color-scheme: light; }
+body{
+  margin:0;
+  background:var(--bg);
+  background-image:
+    radial-gradient(circle at 1px 1px, var(--bg-tex) 1px, transparent 0);
+  background-size: 22px 22px;
+  color:var(--text);
+  font-family:'Karla', ui-sans-serif, system-ui, sans-serif;
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{ font-family:'Fraunces', Georgia, serif; text-wrap:balance; margin:0; }
+.mono{ font-family:'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+a{ color:var(--accent); }
+button{ font-family:inherit; }
+:focus-visible{ outline:2px solid var(--focus); outline-offset:2px; border-radius:4px; }
+
+.page{ max-width:920px; margin:0 auto; padding:20px 16px 64px; }
+
+.topbar{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:10px 4px 22px; flex-wrap:wrap;
+}
+.brand{ display:flex; align-items:center; gap:10px; }
+.brand-mark{ font-size:26px; line-height:1; }
+.brand-name{ font-family:'Fraunces', serif; font-weight:600; font-size:22px; letter-spacing:-0.01em; }
+.whoami{ display:flex; align-items:center; gap:6px; font-size:14px; color:var(--text-muted); }
+.whoami strong{ color:var(--text); }
+.topbar.solo{ justify-content:center; }
+
+.hero{
+  background:linear-gradient(160deg, var(--accent) 0%, #33665F 100%);
+  color:var(--accent-ink);
+  border-radius:20px;
+  padding:26px 26px 22px;
+  box-shadow:0 12px 28px -14px var(--shadow);
+  margin-bottom:18px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute; right:-40px; top:-40px; width:180px; height:180px;
+  background:radial-gradient(circle, rgba(255,255,255,0.14), transparent 70%);
+}
+.hero-eyebrow{
+  font-size:12px; text-transform:uppercase; letter-spacing:0.09em; font-weight:600;
+  opacity:0.85; margin-bottom:6px;
+}
+.hero-week{ font-size:15px; opacity:0.92; margin-bottom:2px; }
+.hero-person{
+  font-family:'Fraunces', serif; font-weight:700; font-size:clamp(28px, 6vw, 40px);
+  margin:2px 0 12px; letter-spacing:-0.01em;
+}
+.pill{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:12.5px; font-weight:600; padding:4px 11px; border-radius:999px;
+  background:rgba(255,255,255,0.16); color:#fff;
+}
+.pill[data-status="pending"]{ background:rgba(255,255,255,0.18); }
+.pill-solo{
+  font-size:12.5px; font-weight:600; padding:4px 11px; border-radius:999px;
+}
+.pill-solo[data-status="pending"]{ background:var(--warning-soft); color:var(--warning); }
+.pill-solo[data-status="pending_validation"]{ background:var(--gold-soft); color:var(--gold); }
+.pill-solo[data-status="done"]{ background:var(--success-soft); color:var(--success); }
+.pill-solo[data-status="swapped"]{ background:var(--info-soft); color:var(--info); }
+.admin-btn{ margin-left:6px; }
+
+.hero-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+.hero-detail{ font-size:14.5px; opacity:0.95; margin-top:10px; }
+
+.btn{
+  border:none; border-radius:10px; padding:10px 16px; font-size:14.5px; font-weight:600;
+  cursor:pointer; display:inline-flex; align-items:center; gap:7px; transition:transform .08s ease, filter .12s ease;
+}
+.btn:active{ transform:translateY(1px); }
+.btn-primary{ background:#fff; color:var(--accent); }
+.btn-primary:hover{ filter:brightness(0.96); }
+.btn-ghost{ background:rgba(255,255,255,0.14); color:#fff; }
+.btn-ghost:hover{ background:rgba(255,255,255,0.22); }
+.btn-solid{ background:var(--accent); color:var(--accent-ink); }
+.btn-solid:hover{ filter:brightness(1.06); }
+.btn-outline{ background:transparent; color:var(--accent); border:1.5px solid var(--accent); }
+.btn-outline:hover{ background:var(--accent-soft); }
+.btn-danger-outline{ background:transparent; color:var(--danger); border:1.5px solid var(--danger); }
+.btn-small{ padding:6px 12px; font-size:13px; border-radius:8px; }
+.btn:disabled{ opacity:0.5; cursor:not-allowed; }
+.link-btn{
+  background:none; border:none; color:var(--text-muted); font-size:13.5px; cursor:pointer;
+  padding:4px 6px; border-radius:6px;
+}
+.link-btn:hover{ color:var(--text); background:var(--surface-2); }
+
+.swap-panel{
+  margin-top:16px; background:rgba(255,255,255,0.12); border-radius:14px; padding:16px;
+}
+.swap-panel label{ font-size:13.5px; font-weight:600; display:block; margin-bottom:6px; }
+.swap-panel select{
+  width:100%; padding:9px 10px; border-radius:8px; border:none; font-size:14.5px;
+  margin-bottom:12px; font-family:inherit;
+}
+.radio-row{ display:flex; flex-direction:column; gap:8px; margin-bottom:14px; }
+.radio-opt{
+  display:flex; align-items:flex-start; gap:9px; background:rgba(255,255,255,0.10);
+  padding:10px 12px; border-radius:10px; cursor:pointer; font-size:14px;
+}
+.radio-opt input{ margin-top:3px; }
+.swap-actions{ display:flex; gap:10px; }
+
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px; }
+@media (max-width:720px){ .grid-2{ grid-template-columns:1fr; } }
+
+.card{
+  background:var(--surface); border:1px solid var(--border); border-radius:16px;
+  padding:20px 20px 18px; box-shadow:0 6px 18px -14px var(--shadow);
+}
+.card + .card{ margin-top:18px; }
+.card-head{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:14px; }
+.card-title{ font-size:19px; font-weight:600; }
+.card-sub{ font-size:12.5px; color:var(--text-muted); }
+
+.plan-table{ width:100%; border-collapse:collapse; font-size:14.5px; }
+.plan-table th{
+  text-align:left; font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em;
+  color:var(--text-muted); font-weight:600; padding:0 8px 8px 0; border-bottom:1px solid var(--border);
+}
+.plan-table td{ padding:9px 8px 9px 0; border-bottom:1px solid var(--border); vertical-align:middle; }
+.plan-table tr:last-child td{ border-bottom:none; }
+.plan-table tr[data-current="true"] td{ background:var(--accent-soft); }
+.plan-table tr[data-current="true"] td:first-child{ border-radius:8px 0 0 8px; }
+.plan-table tr[data-current="true"] td:last-child{ border-radius:0 8px 8px 0; }
+
+.debt-row{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:11px 0; border-bottom:1px solid var(--border);
+}
+.debt-row:last-child{ border-bottom:none; }
+.debt-text{ font-size:14.5px; }
+.debt-date{ font-size:12px; color:var(--text-muted); display:block; margin-top:2px; }
+
+.empty{
+  color:var(--text-muted); font-size:14px; padding:14px 0; text-align:center;
+  border:1.5px dashed var(--border); border-radius:12px; margin-top:2px;
+}
+
+form.form{ margin-top:4px; }
+.field{ margin-bottom:12px; }
+.field label{ display:block; font-size:13px; font-weight:600; margin-bottom:5px; color:var(--text); }
+.field input[type="text"], .field input[type="number"], .field select{
+  width:100%; padding:9px 11px; border-radius:9px; border:1px solid var(--border);
+  background:var(--surface); color:var(--text); font-size:14.5px; font-family:inherit;
+}
+.two-col{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.checks{ display:flex; flex-wrap:wrap; gap:8px; }
+.check{
+  display:flex; align-items:center; gap:6px; font-size:13.5px;
+  border:1px solid var(--border); border-radius:999px; padding:6px 12px; cursor:pointer;
+}
+.check input{ accent-color:var(--accent); }
+
+.expense-row{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; padding:11px 0; border-bottom:1px solid var(--border); }
+.expense-row:last-child{ border-bottom:none; }
+.expense-desc{ font-size:14.5px; font-weight:600; }
+.expense-meta{ font-size:12.5px; color:var(--text-muted); margin-top:2px; }
+.expense-amount{ font-weight:600; white-space:nowrap; }
+.expense-del{ background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:15px; padding:2px 6px; border-radius:6px; }
+.expense-del:hover{ color:var(--danger); background:var(--danger-soft); }
+
+.balance-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:11px 0; border-bottom:1px solid var(--border); }
+.balance-row:last-child{ border-bottom:none; }
+.balance-text{ font-size:14.5px; }
+.balance-amount{ font-weight:700; color:var(--gold); }
+
+.solde-grid{ display:flex; flex-direction:column; }
+.solde-row{ display:flex; align-items:center; justify-content:space-between; padding:7px 0; font-size:14.5px; }
+.solde-name{ font-weight:600; }
+.solde-amount{ font-weight:700; }
+.balance-positive{ color:var(--success); }
+.balance-negative{ color:var(--gold); }
+.balance-zero{ color:var(--text-muted); }
+.balances-divider{ height:1px; background:var(--border); margin:6px 0 14px; }
+
+.split-mode-row{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:2px; }
+.radio-inline{ display:flex; align-items:center; gap:6px; font-size:13.5px; cursor:pointer; }
+.split-person-row{ display:flex; align-items:center; gap:10px; margin-bottom:7px; }
+.split-person-row .check{ flex:1; }
+.split-value{
+  width:96px; padding:7px 9px; border-radius:8px; border:1px solid var(--border);
+  background:var(--surface); color:var(--text); font-size:13.5px; font-family:inherit;
+}
+#split-hint{ margin:2px 0 10px; min-height:16px; }
+.expense-icon-btn{
+  background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:14px;
+  padding:4px 6px; border-radius:6px;
+}
+.expense-icon-btn:hover{ background:var(--surface-2); color:var(--text); }
+
+.settings-panel{ margin-top:18px; }
+.settings-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
+@media (max-width:520px){ .settings-grid{ grid-template-columns:1fr; } }
+
+details.rules{ margin-top:18px; }
+details.rules summary{
+  cursor:pointer; font-weight:600; font-size:14.5px; color:var(--accent); list-style:none;
+  display:flex; align-items:center; gap:6px;
+}
+details.rules summary::-webkit-details-marker{ display:none; }
+details.rules[open] summary::after{ content:"▲"; font-size:10px; }
+details.rules summary::after{ content:"▼"; font-size:10px; }
+.rules-body{ font-size:14px; color:var(--text-muted); margin-top:10px; line-height:1.6; }
+.rules-body ul{ margin:6px 0 0; padding-left:18px; }
+
+.foot{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  margin-top:22px; padding:0 4px;
+}
+.sync-pill{
+  font-size:12px; color:var(--text-muted); display:inline-flex; align-items:center; gap:6px;
+}
+.sync-dot{ width:7px; height:7px; border-radius:50%; background:var(--text-muted); }
+.sync-pill[data-state="saved"] .sync-dot{ background:var(--success); }
+.sync-pill[data-state="saving"] .sync-dot{ background:var(--warning); }
+.sync-pill[data-state="error"] .sync-dot{ background:var(--danger); }
+.sync-pill[data-state="readonly"] .sync-dot{ background:var(--info); }
+.sync-pill[data-state="preview"] .sync-dot{ background:var(--text-muted); }
+
+.banner{
+  background:var(--info-soft); color:var(--info); border-radius:12px; padding:12px 14px;
+  font-size:13.5px; margin-bottom:18px; display:flex; gap:8px; align-items:flex-start;
+}
+.hint-banner{
+  background:var(--warning-soft); color:var(--warning); border-radius:12px; padding:12px 14px;
+  font-size:13.5px; margin-bottom:18px;
+}
+
+.join-gate{
+  background:linear-gradient(160deg, var(--accent) 0%, #33665F 100%);
+  color:#fff; border-radius:20px; padding:32px 26px 28px; text-align:center;
+  box-shadow:0 12px 28px -14px var(--shadow); position:relative; overflow:hidden;
+  max-width:440px; margin:36px auto 0;
+}
+.join-gate::after{
+  content:""; position:absolute; right:-40px; top:-40px; width:180px; height:180px;
+  background:radial-gradient(circle, rgba(255,255,255,0.14), transparent 70%);
+}
+.join-mark{ font-size:36px; margin-bottom:8px; }
+.join-title{ font-family:'Fraunces', serif; font-weight:700; font-size:clamp(24px, 6vw, 30px); margin-bottom:6px; }
+.join-sub{ font-size:14px; opacity:0.92; margin:0 0 14px; }
+.join-count{
+  font-size:12.5px; opacity:0.95; background:rgba(255,255,255,0.14); display:inline-block;
+  padding:5px 13px; border-radius:999px; margin-bottom:18px;
+}
+.join-form{ background:rgba(255,255,255,0.12); border-radius:14px; padding:18px; text-align:left; position:relative; }
+.join-form .field label{ color:#fff; }
+.join-form input[type="text"]{ background:rgba(255,255,255,0.94); border:none; }
+.join-form .btn{ width:100%; justify-content:center; margin-top:2px; }
+.join-existing{ margin-top:14px; background:rgba(255,255,255,0.10); border-radius:14px; padding:14px 16px; text-align:left; position:relative; }
+.join-existing label{ font-size:13px; font-weight:600; display:block; margin-bottom:8px; }
+.join-existing-row{ display:flex; gap:8px; }
+.join-existing-row select{
+  flex:1; padding:8px 10px; border-radius:8px; border:none; font-family:inherit; font-size:14px;
+}
+.join-full{ background:rgba(255,255,255,0.12); border-radius:14px; padding:16px; font-size:13.5px; text-align:left; }
+
+.request-row{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:11px 0; border-bottom:1px solid var(--border);
+}
+.request-row:last-child{ border-bottom:none; }
+.request-actions{ display:flex; gap:8px; flex-shrink:0; }
+.pending-card{
+  background:linear-gradient(160deg, var(--accent) 0%, #33665F 100%);
+  color:#fff; border-radius:20px; padding:32px 26px 28px; text-align:center;
+  box-shadow:0 12px 28px -14px var(--shadow); max-width:440px; margin:36px auto 0;
+}
+.pending-mark{ font-size:36px; margin-bottom:8px; }
+.pending-title{ font-family:'Fraunces', serif; font-weight:700; font-size:clamp(22px, 6vw, 28px); margin-bottom:8px; }
+.pending-sub{ font-size:14.5px; opacity:0.94; line-height:1.55; margin:0 0 18px; }
+.pending-card .btn{ background:rgba(255,255,255,0.14); color:#fff; }
+.pending-card .btn:hover{ background:rgba(255,255,255,0.22); }
+
+.toast{
+  position:fixed; left:50%; bottom:24px; transform:translateX(-50%);
+  background:var(--text); color:var(--bg); font-size:13.5px; padding:11px 18px;
+  border-radius:999px; box-shadow:0 10px 24px -8px rgba(0,0,0,0.35); z-index:50;
+  max-width:90vw; text-align:center;
+}
+.toast[hidden]{ display:none; }
+
+@media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+</style>
+
+<div class="page">
+  <div id="app"></div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function(){
+  "use strict";
+
+  var MAX_PEOPLE = 4;
+
+  var DEFAULT_STATE = {
+    v: 1,
+    house: "Les Templiers",
+    people: [],
+    joinRequests: [],
+    admin: "Judicaël",
+    anchor: "2026-09-19",
+    weeks: {},
+    choreDebts: [],
+    ledger: []
+  };
+
+  var state = DEFAULT_STATE;
+  var ui = { settingsOpen: false, swapOpenFor: null, editingExpenseId: null };
+  var API_URL = "";
+  var accessCode = null;
+  var rev = 0;
+  var loaded = !API_URL;
+  var loadError = "";
+  var syncState = "preview";
+  try { accessCode = localStorage.getItem("roulement_code"); } catch (e) {}
+  var moi = null;
+  try { moi = localStorage.getItem("roulement_moi"); } catch (e) {}
+
+  /* ---------- date helpers ---------- */
+  function pad(n){ return String(n).padStart(2,"0"); }
+  function toISODate(d){ return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()); }
+  function parseISODate(s){ var p=s.split("-").map(Number); return new Date(p[0],p[1]-1,p[2]); }
+  function addDays(d,n){ var r=new Date(d); r.setDate(r.getDate()+n); return r; }
+  function weekendSaturday(date){
+    var dow = date.getDay();
+    if (dow === 6) return new Date(date);
+    if (dow === 0) return addDays(date,-1);
+    return addDays(date, 6-dow);
+  }
+  function weekKeyFromDate(date){ return toISODate(weekendSaturday(date)); }
+  function nextWeekKey(k){ return toISODate(addDays(parseISODate(k),7)); }
+  function weekIndexOf(weekKey, anchor){
+    var diffDays = Math.round((parseISODate(weekKey) - parseISODate(anchor)) / 86400000);
+    return Math.round(diffDays/7);
+  }
+  function weekKeyFromIndex(idx, anchor){ return toISODate(addDays(parseISODate(anchor), idx*7)); }
+  function assignedFor(weekKey, st){
+    var idx = weekIndexOf(weekKey, st.anchor);
+    var n = st.people.length;
+    var i = ((idx % n) + n) % n;
+    return st.people[i];
+  }
+  function isResolved(weekKey, st){
+    var w = st.weeks[weekKey];
+    return !!(w && (w.status === "done" || w.status === "swapped"));
+  }
+  function currentWeekKey(st){
+    var todayKey = weekKeyFromDate(new Date());
+    var k = weekKeyFromDate(parseISODate(st.anchor));
+    var guard = 0;
+    while (k < todayKey && guard < 500) {
+      if (!isResolved(k, st)) return k;
+      k = nextWeekKey(k);
+      guard++;
+    }
+    return todayKey;
+  }
+  var DOW_FULL = new Intl.DateTimeFormat("fr-FR", { day:"numeric" });
+  var DOW_FMT = new Intl.DateTimeFormat("fr-FR", { day:"numeric", month:"short", year:"numeric" });
+  function formatWeekendRange(satDate){
+    var sun = addDays(satDate,1);
+    if (satDate.getMonth() === sun.getMonth()) {
+      return DOW_FULL.format(satDate) + "–" + DOW_FMT.format(sun);
+    }
+    return DOW_FMT.format(satDate) + " – " + DOW_FMT.format(sun);
+  }
+  function formatDate(iso){ return DOW_FMT.format(parseISODate(iso)); }
+  function fmtEUR(n){ return n.toLocaleString("fr-FR", { style:"currency", currency:"EUR" }); }
+  function todayISO(){ return toISODate(new Date()); }
+  function uid(){ return "id" + Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
+  function esc(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+      return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
+    });
+  }
+
+  /* ---------- balances ---------- */
+  var EXPENSE_CATEGORIES = [
+    { key:"courses", icon:"🛒", label:"Courses" },
+    { key:"loyer", icon:"🏠", label:"Loyer / charges" },
+    { key:"internet", icon:"📶", label:"Internet / abonnements" },
+    { key:"energie", icon:"💡", label:"Électricité / énergie" },
+    { key:"sorties", icon:"🍽️", label:"Sorties / restaurant" },
+    { key:"menage", icon:"🧹", label:"Ménage / entretien" },
+    { key:"autre", icon:"📦", label:"Autre" }
+  ];
+  function categoryOf(key){
+    var found = null;
+    EXPENSE_CATEGORIES.forEach(function(c){ if (c.key === key) found = c; });
+    return found || EXPENSE_CATEGORIES[EXPENSE_CATEGORIES.length - 1];
+  }
+  function splitItems(e){
+    if (!e.split || !e.split.length) return [];
+    if (typeof e.split[0] === "string") {
+      return splitEqual(e.amount, e.split);
+    }
+    return e.split;
+  }
+  function splitEqual(totalAmount, names){
+    var cents = Math.round(totalAmount * 100);
+    var n = names.length;
+    if (n === 0) return [];
+    var base = Math.floor(cents / n);
+    var rem = cents - base * n;
+    return names.map(function(name, i){
+      var c = base + (i < rem ? 1 : 0);
+      return { name: name, amount: Math.round(c) / 100 };
+    });
+  }
+  function splitByWeights(totalAmount, entries){
+    var cents = Math.round(totalAmount * 100);
+    var totalWeight = entries.reduce(function(s, e){ return s + e.weight; }, 0);
+    if (totalWeight <= 0) return entries.map(function(e){ return { name: e.name, amount: 0 }; });
+    var raw = entries.map(function(e){
+      var exact = cents * (e.weight / totalWeight);
+      return { name: e.name, floor: Math.floor(exact), rem: exact - Math.floor(exact) };
+    });
+    var assigned = raw.reduce(function(s, r){ return s + r.floor; }, 0);
+    var leftover = cents - assigned;
+    raw.sort(function(a, b){ return b.rem - a.rem; });
+    for (var i = 0; i < leftover && i < raw.length; i++) { raw[i].floor += 1; }
+    var byName = {};
+    raw.forEach(function(r){ byName[r.name] = r.floor; });
+    return entries.map(function(e){ return { name: e.name, amount: Math.round(byName[e.name]) / 100 }; });
+  }
+  function findExpense(st, id){
+    var found = null;
+    st.ledger.forEach(function(e){ if (e.id === id && e.type === "expense") found = e; });
+    return found;
+  }
+
+  function computeNet(st){
+    var net = {};
+    st.people.forEach(function(p){ net[p] = 0; });
+    st.ledger.forEach(function(e){
+      if (e.type === "expense") {
+        net[e.paidBy] = (net[e.paidBy] || 0) + e.amount;
+        splitItems(e).forEach(function(it){ net[it.name] = (net[it.name] || 0) - it.amount; });
+      } else if (e.type === "swap_payment") {
+        net[e.from] = (net[e.from] || 0) - e.amount;
+        net[e.to] = (net[e.to] || 0) + e.amount;
+      } else if (e.type === "settlement") {
+        net[e.from] = (net[e.from] || 0) + e.amount;
+        net[e.to] = (net[e.to] || 0) - e.amount;
+      }
+    });
+    return net;
+  }
+  function simplifyDebts(net){
+    var creditors = [], debtors = [];
+    Object.keys(net).forEach(function(p){
+      var v = net[p];
+      if (v > 0.005) creditors.push({ p:p, v:v });
+      else if (v < -0.005) debtors.push({ p:p, v:-v });
+    });
+    creditors.sort(function(a,b){ return b.v - a.v; });
+    debtors.sort(function(a,b){ return b.v - a.v; });
+    var tx = [], i = 0, j = 0;
+    while (i < debtors.length && j < creditors.length) {
+      var d = debtors[i], c = creditors[j];
+      var amt = Math.min(d.v, c.v);
+      tx.push({ from:d.p, to:c.p, amount: Math.round(amt*100)/100 });
+      d.v -= amt; c.v -= amt;
+      if (d.v <= 0.005) i++;
+      if (c.v <= 0.005) j++;
+    }
+    return tx;
+  }
+
+  /* ---------- rendering ---------- */
+  function optionsForPeople(list, selected){
+    return list.map(function(p){
+      return '<option value="'+esc(p)+'"'+(p===selected?" selected":"")+'>'+esc(p)+"</option>";
+    }).join("");
+  }
+
+  function renderHero(st){
+    var wk = currentWeekKey(st);
+    var satDate = parseISODate(wk);
+    var assigned = assignedFor(wk, st);
+    var entry = st.weeks[wk];
+    var status = entry ? entry.status : "pending";
+    var range = formatWeekendRange(satDate);
+
+    var isAdmin = !!(moi && st.admin && moi === st.admin);
+    var statusLabel = status === "done" ? "Fait" : status === "pending_validation" ? "À valider" : status === "swapped" ? "Échangé" : "En attente";
+    var detail = "";
+    if (status === "pending_validation") {
+      detail = '<div class="hero-detail">'+esc(entry.doneBy)+' affirme avoir fait le ménage le '+esc(formatDate(entry.date))+'. En attente de validation par un·e autre colocataire.</div>';
+    } else if (status === "done") {
+      var validatedLine = entry.validatedBy ? ' · validé par '+esc(entry.validatedBy) : '';
+      detail = '<div class="hero-detail">Fait par '+esc(entry.doneBy)+" le "+esc(formatDate(entry.date))+validatedLine+".</div>";
+    } else if (status === "swapped") {
+      var arr = entry.swap.arrangement === "chore_debt"
+        ? esc(entry.swap.from)+" doit un ménage à "+esc(entry.swap.to)
+        : esc(entry.swap.from)+" a versé 20 pièces (20 €) à "+esc(entry.swap.to);
+      detail = '<div class="hero-detail">Fait par '+esc(entry.swap.to)+" à la place de "+esc(entry.swap.from)+". "+arr+".</div>";
+    }
+
+    var actions = "";
+    if (status === "pending") {
+      actions =
+        '<div class="hero-actions">' +
+          '<button type="button" class="btn btn-primary" data-action="mark-done" data-week="'+esc(wk)+'">✓ Marquer comme fait</button>' +
+          (st.people.length >= 2 ? '<button type="button" class="btn btn-ghost" data-action="open-swap" data-week="'+esc(wk)+'">⇄ Demander un échange</button>' : '') +
+        '</div>';
+    } else if (status === "pending_validation") {
+      var canValidate = st.people.length >= 2 && moi && moi !== entry.doneBy;
+      actions = canValidate
+        ? '<div class="hero-actions"><button type="button" class="btn btn-primary" data-action="validate-done" data-week="'+esc(wk)+'">✓ Valider</button></div>'
+        : '';
+    }
+    if (isAdmin && status !== "swapped") {
+      if (status === "done") {
+        actions += '<div class="hero-actions" style="margin-top:8px;"><button type="button" class="btn btn-ghost btn-small" data-action="admin-unvalidate" data-week="'+esc(wk)+'">🔑 Dévalider (admin)</button></div>';
+      } else {
+        actions += '<div class="hero-actions" style="margin-top:8px;"><button type="button" class="btn btn-ghost btn-small" data-action="admin-validate" data-week="'+esc(wk)+'">🔑 Valider directement (admin)</button></div>';
+      }
+    }
+
+    var swapPanel = "";
+    if (ui.swapOpenFor === wk) {
+      var others = st.people.filter(function(p){ return p !== assigned; });
+      swapPanel =
+        '<form class="swap-panel" data-action="confirm-swap" data-week="'+esc(wk)+'">' +
+          '<label for="swap-to">'+esc(assigned)+" ne peut pas — qui prend le relais ?</label>" +
+          '<select id="swap-to" name="to" required>'+optionsForPeople(others, others[0])+'</select>' +
+          '<div class="radio-row">' +
+            '<label class="radio-opt"><input type="radio" name="arrangement" value="chore_debt" checked> '+esc(assigned)+" doit un ménage en retour (dette de ménage)</label>" +
+            '<label class="radio-opt"><input type="radio" name="arrangement" value="payment"> 🪙 '+esc(assigned)+" verse 20 pièces (20 €)</label>" +
+          '</div>' +
+          '<div class="swap-actions">' +
+            '<button type="submit" class="btn btn-primary btn-small">Confirmer l’échange</button>' +
+            '<button type="button" class="btn btn-ghost btn-small" data-action="cancel-swap">Annuler</button>' +
+          '</div>' +
+        '</form>';
+    }
+
+    return (
+      '<div class="hero">' +
+        '<div class="hero-eyebrow">Tour de ménage</div>' +
+        '<div class="hero-week">Semaine du '+range+'</div>' +
+        '<div class="hero-person">'+esc(assigned)+'</div>' +
+        '<span class="pill" data-status="'+status+'">'+statusLabel+'</span>' +
+        detail +
+        actions +
+        swapPanel +
+      '</div>'
+    );
+  }
+
+  function renderPlanning(st){
+    var curKey = currentWeekKey(st);
+    var curIdx = weekIndexOf(curKey, st.anchor);
+    var isAdmin = !!(moi && st.admin && moi === st.admin);
+    var rows = "";
+    for (var off = -2; off <= 4; off++) {
+      var idx = curIdx + off;
+      var wk = weekKeyFromIndex(idx, st.anchor);
+      var sat = parseISODate(wk);
+      var assigned = assignedFor(wk, st);
+      var entry = st.weeks[wk];
+      var status = entry ? entry.status : "pending";
+      var label = status === "done" ? "Fait" : status === "pending_validation" ? "À valider" : status === "swapped" ? "Échangé" : (wk < curKey ? "En retard" : wk === curKey ? "En cours" : "À venir");
+      var who = entry ? (status === "swapped" ? entry.swap.to : entry.doneBy) : assigned;
+      var adminBtn = "";
+      if (isAdmin && status !== "swapped") {
+        adminBtn = status === "done"
+          ? ' <button type="button" class="btn btn-outline btn-small admin-btn" data-action="admin-unvalidate" data-week="'+esc(wk)+'">Dévalider</button>'
+          : ' <button type="button" class="btn btn-outline btn-small admin-btn" data-action="admin-validate" data-week="'+esc(wk)+'">Valider</button>';
+      }
+      rows +=
+        '<tr data-current="'+(wk===curKey)+'">' +
+          '<td>'+formatWeekendRange(sat)+'</td>' +
+          '<td>'+esc(who)+(status==="swapped" ? ' <span class="card-sub">(à la place de '+esc(assigned)+')</span>' : '')+'</td>' +
+          '<td><span class="pill-solo" data-status="'+status+'">'+label+'</span>'+adminBtn+'</td>' +
+        '</tr>';
+    }
+    return (
+      '<div class="card">' +
+        '<div class="card-head"><h3 class="card-title">Planning</h3><span class="card-sub">3 dernières + 5 prochaines semaines</span></div>' +
+        '<table class="plan-table"><thead><tr><th>Week-end</th><th>Assigné(e)</th><th>Statut</th></tr></thead><tbody>' + rows + '</tbody></table>' +
+      '</div>'
+    );
+  }
+
+  function renderChoreDebts(st){
+    var open = st.choreDebts.filter(function(d){ return !d.settled; });
+    var rows;
+    if (open.length === 0) {
+      rows = '<div class="empty">Aucune dette de ménage en cours 🎉</div>';
+    } else {
+      rows = open.map(function(d){
+        return (
+          '<div class="debt-row">' +
+            '<div class="debt-text"><strong>'+esc(d.from)+'</strong> doit un ménage à <strong>'+esc(d.to)+'</strong>' +
+            '<span class="debt-date">depuis le '+esc(formatDate(d.createdAt))+'</span></div>' +
+            '<button type="button" class="btn btn-outline btn-small" data-action="settle-chore-debt" data-id="'+esc(d.id)+'">Marquer réglée</button>' +
+          '</div>'
+        );
+      }).join("");
+    }
+    return (
+      '<div class="card">' +
+        '<div class="card-head"><h3 class="card-title">Dettes de ménage</h3></div>' +
+        rows +
+      '</div>'
+    );
+  }
+
+  function renderExpenseForm(st){
+    var editing = ui.editingExpenseId ? findExpense(st, ui.editingExpenseId) : null;
+    var mode = editing ? (editing.splitMode || "equal") : "equal";
+    var valuesByName = {};
+    if (editing) splitItems(editing).forEach(function(it){ valuesByName[it.name] = it.amount; });
+
+    var catOptions = EXPENSE_CATEGORIES.map(function(c){
+      return '<option value="'+c.key+'"'+((editing ? editing.category : "autre") === c.key ? " selected" : "")+'>'+c.icon+" "+esc(c.label)+"</option>";
+    }).join("");
+    var paidByDefault = editing ? editing.paidBy : (moi && st.people.indexOf(moi) >= 0 ? moi : st.people[0]);
+
+    var personRows = st.people.map(function(p){
+      var checked = editing ? valuesByName.hasOwnProperty(p) : true;
+      var val = valuesByName.hasOwnProperty(p) ? valuesByName[p] : "";
+      return (
+        '<div class="split-person-row">' +
+          '<label class="check"><input type="checkbox" name="split" value="'+esc(p)+'"'+(checked ? " checked" : "")+'> '+esc(p)+'</label>' +
+          '<input type="number" class="split-value" data-person="'+esc(p)+'" step="0.01" min="0" placeholder="0,00" value="'+(mode !== "equal" && val !== "" ? val : "")+'"'+(mode === "equal" ? " hidden" : "")+'>' +
+        '</div>'
+      );
+    }).join("");
+
+    return (
+      '<form class="form" id="expense-form" data-action="add-expense" data-editing="'+(editing ? esc(editing.id) : "")+'">' +
+        '<div class="two-col">' +
+          '<div class="field"><label for="exp-desc">Description</label><input type="text" id="exp-desc" name="desc" value="'+(editing ? esc(editing.desc) : "")+'" placeholder="Courses, internet…" required></div>' +
+          '<div class="field"><label for="exp-amount">Montant total</label><input type="number" id="exp-amount" name="amount" min="0.01" step="0.01" value="'+(editing ? editing.amount : "")+'" placeholder="0,00" required></div>' +
+        '</div>' +
+        '<div class="two-col">' +
+          '<div class="field"><label for="exp-category">Catégorie</label><select id="exp-category" name="category">'+catOptions+'</select></div>' +
+          '<div class="field"><label for="exp-paidby">Payé par</label><select id="exp-paidby" name="paidBy">'+optionsForPeople(st.people, paidByDefault)+'</select></div>' +
+        '</div>' +
+        '<div class="field">' +
+          '<label>Répartition</label>' +
+          '<div class="split-mode-row">' +
+            '<label class="radio-inline"><input type="radio" name="splitMode" value="equal"'+(mode === "equal" ? " checked" : "")+'> Égal</label>' +
+            '<label class="radio-inline"><input type="radio" name="splitMode" value="exact"'+(mode === "exact" ? " checked" : "")+'> Montants</label>' +
+            '<label class="radio-inline"><input type="radio" name="splitMode" value="shares"'+(mode === "shares" ? " checked" : "")+'> Parts</label>' +
+          '</div>' +
+        '</div>' +
+        '<div class="field" id="split-people">'+personRows+'</div>' +
+        '<div class="card-sub" id="split-hint"></div>' +
+        '<div style="display:flex;gap:10px;margin-top:6px;">' +
+          '<button type="submit" class="btn btn-solid">'+(editing ? "Enregistrer les modifications" : "Ajouter la dépense")+'</button>' +
+          (editing ? '<button type="button" class="btn btn-ghost" data-action="cancel-edit-expense">Annuler</button>' : "") +
+        '</div>' +
+      '</form>'
+    );
+  }
+
+  function renderExpenseList(st){
+    var expenses = st.ledger.filter(function(e){ return e.type === "expense"; }).slice().reverse();
+    if (expenses.length === 0) return '<div class="empty">Aucune dépense enregistrée. Ajoute la première ci-dessus.</div>';
+    return expenses.slice(0, 12).map(function(e){
+      var cat = categoryOf(e.category);
+      var breakdown = splitItems(e).map(function(it){ return esc(it.name) + " " + fmtEUR(it.amount); }).join(", ");
+      return (
+        '<div class="expense-row">' +
+          '<div>' +
+            '<div class="expense-desc">'+cat.icon+" "+esc(e.desc)+'</div>' +
+            '<div class="expense-meta">Payé par '+esc(e.paidBy)+' · '+esc(formatDate(e.date))+'</div>' +
+            '<div class="expense-meta">'+breakdown+'</div>' +
+          '</div>' +
+          '<div style="display:flex;align-items:center;gap:4px;">' +
+            '<span class="expense-amount mono">'+fmtEUR(e.amount)+'</span>' +
+            '<button type="button" class="expense-icon-btn" title="Modifier" data-action="edit-expense" data-id="'+esc(e.id)+'">✏️</button>' +
+            '<button type="button" class="expense-icon-btn" title="Supprimer" data-action="delete-expense" data-id="'+esc(e.id)+'">✕</button>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join("");
+  }
+
+  function renderExpenses(st){
+    return (
+      '<div class="card">' +
+        '<div class="card-head"><h3 class="card-title">Dépenses courantes</h3></div>' +
+        renderExpenseForm(st) +
+        '<div style="margin-top:16px;">'+renderExpenseList(st)+'</div>' +
+      '</div>'
+    );
+  }
+
+  function renderBalances(st){
+    var net = computeNet(st);
+
+    var ranked = st.people.slice().sort(function(a, b){ return (net[b] || 0) - (net[a] || 0); });
+    var soldeRows = ranked.map(function(p){
+      var v = Math.round((net[p] || 0) * 100) / 100;
+      var cls = v > 0.005 ? "balance-positive" : v < -0.005 ? "balance-negative" : "balance-zero";
+      var sign = v > 0.005 ? "+" : v < -0.005 ? "−" : "";
+      return (
+        '<div class="solde-row">' +
+          '<span class="solde-name">'+esc(p)+'</span>' +
+          '<span class="solde-amount mono '+cls+'">'+sign+fmtEUR(Math.abs(v))+'</span>' +
+        '</div>'
+      );
+    }).join("");
+
+    var tx = simplifyDebts(net);
+    var rows;
+    if (tx.length === 0) {
+      rows = '<div class="empty">Tout le monde est à jour ✅</div>';
+    } else {
+      rows = tx.map(function(t){
+        return (
+          '<div class="balance-row">' +
+            '<div class="balance-text"><strong>'+esc(t.from)+'</strong> doit <strong>'+esc(t.to)+'</strong></div>' +
+            '<div style="display:flex;align-items:center;gap:10px;">' +
+              '<span class="balance-amount mono">'+fmtEUR(t.amount)+'</span>' +
+              '<button type="button" class="btn btn-outline btn-small" data-action="settle-balance" data-from="'+esc(t.from)+'" data-to="'+esc(t.to)+'" data-amount="'+t.amount+'">Marquer réglé</button>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join("");
+    }
+    return (
+      '<div class="card">' +
+        '<div class="card-head"><h3 class="card-title">Soldes</h3><span class="card-sub">Dépenses + échanges de ménage payés</span></div>' +
+        '<div class="solde-grid">'+soldeRows+'</div>' +
+        '<div class="balances-divider"></div>' +
+        rows +
+      '</div>'
+    );
+  }
+
+  function renderSettings(st){
+    if (!ui.settingsOpen) return "";
+    var fields = st.people.map(function(p, i){
+      return (
+        '<div class="field"><label for="name-'+i+'">Colocataire '+(i+1)+'</label>' +
+        '<div style="display:flex;gap:8px;">' +
+          '<input type="text" class="person-name-input" id="name-'+i+'" value="'+esc(p)+'" required>' +
+          '<button type="button" class="btn btn-danger-outline btn-small" data-action="remove-person" data-index="'+i+'">Retirer</button>' +
+        '</div></div>'
+      );
+    }).join("");
+    return (
+      '<div class="card settings-panel">' +
+        '<div class="card-head"><h3 class="card-title">Réglages</h3></div>' +
+        '<form class="form" data-action="save-settings">' +
+          '<div class="field"><label for="house-name">Nom de la colocation</label>' +
+          '<input type="text" id="house-name" name="house" value="'+esc(st.house)+'" required></div>' +
+          (st.people.length ? '<div class="field"><label for="admin-select">Administrateur·rice (peut valider n’importe quelle semaine sans validation croisée)</label>' +
+          '<select id="admin-select" name="admin">'+optionsForPeople(st.people, st.people.indexOf(st.admin)!==-1 ? st.admin : st.people[0])+'</select></div>' : '') +
+          (fields ? '<div class="settings-grid">'+fields+'</div>' : '<p class="card-sub">Personne n’a encore rejoint.</p>') +
+          '<button type="submit" class="btn btn-solid">Enregistrer</button>' +
+        '</form>' +
+      '</div>'
+    );
+  }
+
+  function renderJoinGate(st){
+    var count = st.people.length;
+    var full = count >= MAX_PEOPLE;
+    var countLine = count === 0
+      ? "Personne n’a encore rejoint — sois le premier·ère !"
+      : count + " / " + MAX_PEOPLE + " colocataires inscrit·e·s : " + st.people.join(", ");
+
+    var joinBlock;
+    if (full) {
+      joinBlock = '<div class="join-full">Les '+MAX_PEOPLE+' colocataires sont déjà inscrit·e·s. Si c’est une erreur, un·e colocataire peut corriger les prénoms dans les Réglages une fois connecté·e.</div>';
+    } else {
+      joinBlock =
+        '<form class="form join-form" data-action="join">' +
+          '<div class="field"><label for="join-name">Ton prénom</label>' +
+          '<input type="text" id="join-name" name="name" placeholder="Ex. Camille" maxlength="30" autocomplete="given-name" required></div>' +
+          '<button type="submit" class="btn btn-primary">'+(count === 0 ? 'Rejoindre '+esc(st.house) : 'Demander à rejoindre')+'</button>' +
+          (count > 0 ? '<p class="card-sub" style="color:rgba(255,255,255,0.85);margin:10px 0 0;">'+esc(st.admin)+' devra valider ta demande.</p>' : '') +
+        '</form>';
+    }
+
+    var existing = "";
+    if (count > 0) {
+      existing =
+        '<div class="join-existing">' +
+          '<label for="join-pick">Tu as déjà rejoint depuis un autre appareil ?</label>' +
+          '<div class="join-existing-row">' +
+            '<select id="join-pick">'+optionsForPeople(st.people, st.people[0])+'</select>' +
+            '<button type="button" class="btn btn-outline btn-small" data-action="pick-existing">C’est moi</button>' +
+          '</div>' +
+        '</div>';
+    }
+
+    return (
+      '<div class="join-gate">' +
+        '<div class="join-mark">🧹</div>' +
+        '<h1 class="join-title">'+esc(st.house)+'</h1>' +
+        '<p class="join-sub">Roulement du ménage et suivi des dépenses partagées.</p>' +
+        '<div class="join-count">'+esc(countLine)+'</div>' +
+        joinBlock +
+        existing +
+      '</div>'
+    );
+  }
+
+  function renderPending(st){
+    return (
+      '<div class="pending-card">' +
+        '<div class="pending-mark">⏳</div>' +
+        '<h1 class="pending-title">Demande envoyée</h1>' +
+        '<p class="pending-sub">Bonjour '+esc(moi)+' — ta demande pour rejoindre <strong>'+esc(st.house)+'</strong> attend la validation de <strong>'+esc(st.admin)+'</strong>. Reviens sur cette page dans un instant.</p>' +
+        '<button type="button" class="btn" data-action="cancel-request">Annuler ma demande</button>' +
+      '</div>'
+    );
+  }
+
+  function renderJoinRequests(st){
+    if (!st.joinRequests.length || moi !== st.admin) return "";
+    var full = st.people.length >= MAX_PEOPLE;
+    var rows = st.joinRequests.map(function(r){
+      return (
+        '<div class="request-row">' +
+          '<div class="debt-text"><strong>'+esc(r.name)+'</strong> souhaite rejoindre '+esc(st.house)+
+          '<span class="debt-date">demandé le '+esc(formatDate(r.requestedAt))+'</span></div>' +
+          '<div class="request-actions">' +
+            '<button type="button" class="btn btn-outline btn-small" data-action="reject-request" data-id="'+esc(r.id)+'">Refuser</button>' +
+            '<button type="button" class="btn btn-solid btn-small" data-action="approve-request" data-id="'+esc(r.id)+'"'+(full?' disabled title="Complet"':'')+'>Accepter</button>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join("");
+    return (
+      '<div class="card">' +
+        '<div class="card-head"><h3 class="card-title">Demandes d’adhésion</h3>'+(full?'<span class="card-sub">Complet</span>':'')+'</div>' +
+        rows +
+      '</div>'
+    );
+  }
+
+  function renderBanner(){
+    if (syncState === "preview") {
+      return '<div class="banner">👁️ Aperçu — le site n’est pas encore relié à la base de données : rien n’est partagé entre colocataires.</div>';
+    }
+    if (syncState === "error") {
+      return '<div class="banner">⚠️ Connexion perdue — tes dernières modifications ne sont peut-être pas enregistrées.</div>';
+    }
+    return "";
+  }
+
+  function renderCodeGate(){
+    return (
+      '<div class="join-gate">' +
+        '<div class="join-mark">🔑</div>' +
+        '<h1 class="join-title">Code d’accès</h1>' +
+        '<p class="join-sub">Demande le code de la colocation à Judicaël.</p>' +
+        '<form class="form join-form" data-action="submit-code">' +
+          '<div class="field"><label for="code-input">Code</label>' +
+          '<input type="text" id="code-input" name="code" autocomplete="off" required></div>' +
+          '<button type="submit" class="btn btn-primary">Entrer</button>' +
+          (loadError ? '<p class="card-sub" style="color:#fff;margin:10px 0 0;">'+esc(loadError)+'</p>' : '') +
+        '</form>' +
+      '</div>'
+    );
+  }
+
+  function renderLoading(){
+    return (
+      '<div class="pending-card">' +
+        '<div class="pending-mark">⏳</div>' +
+        '<h1 class="pending-title">'+(loadError ? 'Connexion impossible' : 'Chargement…')+'</h1>' +
+        (loadError ? '<p class="pending-sub">'+esc(loadError)+'</p><button type="button" class="btn" data-action="retry-load">Réessayer</button>' : '') +
+      '</div>'
+    );
+  }
+
+  function renderApp(st){
+    if (API_URL && (!accessCode || !loaded)) {
+      return (
+        '<div class="topbar solo">' +
+          '<div class="brand"><span class="brand-mark">🧹</span><span class="brand-name">'+esc(st.house)+'</span></div>' +
+        '</div>' +
+        (accessCode ? renderLoading() : renderCodeGate())
+      );
+    }
+
+    var approved =!!(moi && st.people.indexOf(moi) !== -1);
+    var pending = !approved && !!(moi && st.joinRequests.some(function(r){ return r.name === moi; }));
+
+    if (pending) {
+      return (
+        '<div class="topbar solo">' +
+          '<div class="brand"><span class="brand-mark">🧹</span><span class="brand-name">'+esc(st.house)+'</span></div>' +
+        '</div>' +
+        renderBanner() +
+        renderPending(st)
+      );
+    }
+
+    if (!approved) {
+      return (
+        '<div class="topbar solo">' +
+          '<div class="brand"><span class="brand-mark">🧹</span><span class="brand-name">'+esc(st.house)+'</span></div>' +
+        '</div>' +
+        renderBanner() +
+        renderJoinGate(st)
+      );
+    }
+
+    var html =
+      '<div class="topbar">' +
+        '<div class="brand"><span class="brand-mark">🧹</span><span class="brand-name">'+esc(st.house)+'</span></div>' +
+        '<div class="whoami">Bonjour, <strong>'+esc(moi)+'</strong> · <button type="button" class="link-btn" data-action="switch-me">changer</button></div>' +
+      '</div>' +
+      renderBanner() +
+      renderJoinRequests(st) +
+      renderHero(st) +
+      '<div class="grid-2">' + renderPlanning(st) + renderChoreDebts(st) + '</div>' +
+      renderExpenses(st) +
+      renderBalances(st) +
+      '<details class="rules"'+(ui.rulesOpen ? " open" : "")+'><summary>Comment ça marche ?</summary>' +
+        '<div class="rules-body">' +
+          '<p>Le ménage se fait un week-end sur '+st.people.length+', à tour de rôle entre les colocataires inscrit·e·s.</p>' +
+          '<ul>' +
+            '<li>À sa première visite, chaque colocataire demande à rejoindre '+esc(st.house)+' en tapant son prénom, et l’administrateur·rice ('+esc(st.admin)+') valide l’inscription.</li>' +
+            '<li>Si tu peux le faire : clique sur <em>Marquer comme fait</em>, puis un·e autre colocataire doit <em>Valider</em> pour confirmer.</li>' +
+            '<li>L’administrateur·rice (réglable dans les Réglages) peut valider n’importe quelle semaine directement, sans validation croisée.</li>' +
+            '<li>Si tu ne peux pas : demande à un·e colocataire de le faire à ta place. S’il·elle accepte, choisissez un arrangement — soit tu lui dois un ménage plus tard, soit tu lui verses 20 pièces (20 €).</li>' +
+            '<li>Les dépenses courantes (courses, factures…) se répartissent entre colocataires et s’ajoutent au même solde que les échanges payés.</li>' +
+          '</ul>' +
+        '</div>' +
+      '</details>' +
+      renderSettings(st) +
+      '<div class="foot">' +
+        '<span class="sync-pill" data-state="'+syncState+'" id="sync-status"><span class="sync-dot"></span>'+syncLabel(syncState)+'</span>' +
+        '<button type="button" class="link-btn" data-action="toggle-settings">⚙️ Réglages</button>' +
+      '</div>';
+    return html;
+  }
+
+  function syncLabel(s){
+    return { saved:"Enregistré", saving:"Enregistrement…", error:"Échec de l’enregistrement",
+      readonly:"Lecture seule", preview:"Aperçu" }[s] || "";
+  }
+
+  function renderAll(){
+    document.getElementById("app").innerHTML = renderApp(state);
+    var ef = document.getElementById("expense-form");
+    if (ef) updateSplitUI(ef);
+  }
+
+  /* ---------- expense split form (local DOM-only, no persist) ---------- */
+  function updateSplitUI(form){
+    var modeInput = form.querySelector('input[name="splitMode"]:checked');
+    if (!modeInput) return;
+    var mode = modeInput.value;
+    var rows = form.querySelectorAll(".split-person-row");
+    for (var i = 0; i < rows.length; i++) {
+      var checkbox = rows[i].querySelector('input[name="split"]');
+      var valueInput = rows[i].querySelector(".split-value");
+      if (mode === "equal") {
+        valueInput.hidden = true;
+      } else {
+        valueInput.hidden = !checkbox.checked;
+        valueInput.placeholder = mode === "shares" ? "Parts (1)" : "0,00";
+        if (checkbox.checked && !valueInput.value && mode === "shares") valueInput.value = "1";
+      }
+    }
+    updateSplitHint(form, mode);
+  }
+
+  function updateSplitHint(form, mode){
+    var hint = form.querySelector("#split-hint");
+    if (!hint) return;
+    var amountInput = form.querySelector("#exp-amount");
+    var total = parseFloat(amountInput ? amountInput.value : "") || 0;
+    if (mode === "exact") {
+      var sum = 0;
+      var rows = form.querySelectorAll(".split-person-row");
+      for (var i = 0; i < rows.length; i++) {
+        var checkbox = rows[i].querySelector('input[name="split"]');
+        if (checkbox.checked) sum += parseFloat(rows[i].querySelector(".split-value").value) || 0;
+      }
+      var diff = Math.round((total - sum) * 100) / 100;
+      hint.textContent = diff === 0 ? "Réparti à 100 % ✓" : diff > 0
+        ? "Reste " + fmtEUR(diff) + " à répartir"
+        : fmtEUR(-diff) + " de trop réparti·s";
+    } else if (mode === "shares") {
+      var totalShares = 0;
+      var rows2 = form.querySelectorAll(".split-person-row");
+      for (var j = 0; j < rows2.length; j++) {
+        var cb2 = rows2[j].querySelector('input[name="split"]');
+        if (cb2.checked) totalShares += parseFloat(rows2[j].querySelector(".split-value").value) || 0;
+      }
+      hint.textContent = totalShares > 0 ? totalShares + (totalShares > 1 ? " parts au total" : " part au total") : "Ajoute au moins une part";
+    } else {
+      hint.textContent = "";
+    }
+  }
+
+  /* ---------- toast ---------- */
+  var toastTimer = null;
+  function toast(msg){
+    var el = document.getElementById("toast");
+    el.textContent = msg;
+    el.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ el.hidden = true; }, 4200);
+  }
+
+  /* ---------- persistence ---------- */
+  function clone(o){ return JSON.parse(JSON.stringify(o)); }
+
+  function setSyncState(s){
+    syncState = s;
+    var el = document.getElementById("sync-status");
+    if (el) {
+      el.setAttribute("data-state", s);
+      el.innerHTML = '<span class="sync-dot"></span>' + syncLabel(s);
+    }
+  }
+
+  function apiGet(){
+    return fetch(API_URL + "?code=" + encodeURIComponent(accessCode) + "&t=" + Date.now(), { cache: "no-store" })
+      .then(function(r){ return r.json(); });
+  }
+
+  function apiPost(baseRev, st){
+    return fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ code: accessCode, baseRev: baseRev, state: st })
+    }).then(function(r){ return r.json(); });
+  }
+
+  function normalizeState(s){
+    if (!s.house) s.house = DEFAULT_STATE.house;
+    if (!s.joinRequests) s.joinRequests = [];
+    if (!s.admin || s.people.indexOf(s.admin) === -1) s.admin = s.people[0] || DEFAULT_STATE.admin;
+    return s;
+  }
+
+  function forgetCode(){
+    accessCode = null;
+    try { localStorage.removeItem("roulement_code"); } catch (e) {}
+    loadError = "Code d’accès incorrect.";
+    renderAll();
+  }
+
+  function isEditing(){
+    var a = document.activeElement;
+    return !!(a && /^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName) && document.getElementById("app").contains(a));
+  }
+
+  function loadRemote(){
+    if (!API_URL || !accessCode) return Promise.resolve();
+    return apiGet().then(function(res){
+      if (!res.ok) {
+        if (res.error === "unauthorized") { forgetCode(); return; }
+        loadError = "Erreur du serveur.";
+        renderAll();
+        return;
+      }
+      loadError = "";
+      var firstLoad = !loaded;
+      loaded = true;
+      if ((firstLoad || res.rev !== rev) && (firstLoad || !isEditing())) {
+        rev = res.rev;
+        if (res.state && res.state.people && res.state.anchor) state = normalizeState(res.state);
+        renderAll();
+      }
+      setSyncState("saved");
+    }).catch(function(){
+      if (!loaded) { loadError = "Impossible de joindre le serveur."; renderAll(); }
+      else setSyncState("error");
+    });
+  }
+
+  function performAction(mutator){
+    var base = state;
+    var next = clone(base);
+    mutator(next);
+    state = next;
+    renderAll();
+    persist(mutator, base, 0);
+  }
+
+  function persist(mutator, base, attempt){
+    if (!API_URL) { setSyncState("preview"); return; }
+    setSyncState("saving");
+    apiPost(rev, state).then(function(res){
+      if (res.ok) { rev = res.rev; setSyncState("saved"); return; }
+      if (res.error === "unauthorized") { forgetCode(); return; }
+      if (res.error === "conflict" && attempt < 1 && res.state) {
+        rev = res.rev;
+        var retryNext = clone(normalizeState(res.state));
+        mutator(retryNext);
+        state = retryNext;
+        renderAll();
+        persist(mutator, res.state, attempt + 1);
+        return;
+      }
+      state = base; renderAll();
+      if (res.error === "conflict") {
+        toast("Quelqu’un a modifié les données en même temps. Réessaie ton action.");
+        setSyncState("saved");
+      } else {
+        toast("Échec de l’enregistrement. Réessaie.");
+        setSyncState("error");
+      }
+    }).catch(function(){
+      state = base; renderAll();
+      setSyncState("error");
+      toast("Échec de l’enregistrement. Réessaie.");
+    });
+  }
+
+  /* ---------- actions ---------- */
+  function onSubmit(e){
+    var form = e.target.closest("form[data-action]");
+    if (!form) return;
+    e.preventDefault();
+    var action = form.getAttribute("data-action");
+
+    if (action === "submit-code") {
+      var typed = form.querySelector('input[name="code"]').value.trim();
+      if (!typed) return;
+      accessCode = typed;
+      try { localStorage.setItem("roulement_code", typed); } catch (err) {}
+      loadError = "";
+      renderAll();
+      loadRemote();
+      return;
+    }
+
+    if (action === "confirm-swap") {
+      var wk = form.getAttribute("data-week");
+      var to = form.querySelector('select[name="to"]').value;
+      var arrangement = form.querySelector('input[name="arrangement"]:checked').value;
+      performAction(function(st){
+        var from = assignedFor(wk, st);
+        st.weeks[wk] = { status:"swapped", swap:{ from:from, to:to, arrangement:arrangement }, date: todayISO() };
+        if (arrangement === "chore_debt") {
+          st.choreDebts.push({ id: uid(), from: from, to: to, createdAt: todayISO(), settled: false });
+        } else {
+          st.ledger.push({ id: uid(), type:"swap_payment", from: from, to: to, amount: 20, date: todayISO(),
+            note: "Échange du ménage du " + wk });
+        }
+      });
+      ui.swapOpenFor = null;
+      return;
+    }
+
+    if (action === "add-expense") {
+      var desc = form.querySelector('input[name="desc"]').value.trim();
+      var amount = parseFloat(form.querySelector('input[name="amount"]').value);
+      var category = form.querySelector('select[name="category"]').value;
+      var paidBy = form.querySelector('select[name="paidBy"]').value;
+      var mode = form.querySelector('input[name="splitMode"]:checked').value;
+      var editingId = form.getAttribute("data-editing") || null;
+
+      if (!desc || !(amount > 0)) { toast("Vérifie la description et le montant."); return; }
+
+      var rows = Array.prototype.slice.call(form.querySelectorAll(".split-person-row"));
+      var checkedRows = rows.filter(function(row){ return row.querySelector('input[name="split"]').checked; });
+      if (checkedRows.length === 0) { toast("Sélectionne au moins une personne."); return; }
+
+      var splitResult;
+      if (mode === "equal") {
+        var names = checkedRows.map(function(row){ return row.querySelector('input[name="split"]').value; });
+        splitResult = splitEqual(amount, names);
+      } else if (mode === "exact") {
+        var exactEntries = checkedRows.map(function(row){
+          return { name: row.querySelector('input[name="split"]').value, amount: parseFloat(row.querySelector(".split-value").value) || 0 };
+        });
+        var sum = exactEntries.reduce(function(s, en){ return s + en.amount; }, 0);
+        if (Math.abs(sum - amount) > 0.01) {
+          toast("La somme des montants (" + fmtEUR(sum) + ") ne correspond pas au total (" + fmtEUR(amount) + ").");
+          return;
+        }
+        splitResult = exactEntries.map(function(en){ return { name: en.name, amount: Math.round(en.amount * 100) / 100 }; });
+      } else {
+        var weightEntries = checkedRows.map(function(row){
+          var w = parseFloat(row.querySelector(".split-value").value);
+          return { name: row.querySelector('input[name="split"]').value, weight: (w > 0 ? w : 1) };
+        });
+        splitResult = splitByWeights(amount, weightEntries);
+      }
+
+      performAction(function(st){
+        var existingDate = editingId ? (findExpense(st, editingId) || {}).date : null;
+        var entry = {
+          id: editingId || uid(), type:"expense", desc: desc, amount: Math.round(amount*100)/100,
+          category: category, paidBy: paidBy, splitMode: mode, split: splitResult,
+          date: existingDate || todayISO()
+        };
+        if (editingId) {
+          var idx = -1;
+          st.ledger.forEach(function(e, i){ if (e.id === editingId) idx = i; });
+          if (idx !== -1) st.ledger[idx] = entry; else st.ledger.push(entry);
+        } else {
+          st.ledger.push(entry);
+        }
+      });
+      ui.editingExpenseId = null;
+      return;
+    }
+
+    if (action === "join") {
+      var joinName = form.querySelector('input[name="name"]').value.trim();
+      if (!joinName) { toast("Entre ton prénom pour rejoindre."); return; }
+      if (state.people.length >= MAX_PEOPLE) { toast("Les " + MAX_PEOPLE + " colocataires sont déjà inscrit·e·s."); return; }
+      if (state.people.indexOf(joinName) !== -1) { setMoi(joinName); renderAll(); return; }
+      if (state.joinRequests.some(function(r){ return r.name === joinName; })) { setMoi(joinName); renderAll(); return; }
+      setMoi(joinName);
+      performAction(function(st){
+        var already = st.people.indexOf(joinName) !== -1 || st.joinRequests.some(function(r){ return r.name === joinName; });
+        if (already || st.people.length >= MAX_PEOPLE) return;
+        if (st.people.length === 0) {
+          st.people.push(joinName);
+        } else {
+          st.joinRequests.push({ id: uid(), name: joinName, requestedAt: todayISO() });
+        }
+      });
+      return;
+    }
+
+    if (action === "save-settings") {
+      var houseName = form.querySelector('input[name="house"]').value.trim();
+      var inputs = form.querySelectorAll(".person-name-input");
+      var names = Array.prototype.slice.call(inputs).map(function(i){ return i.value.trim(); });
+      if (!houseName) { toast("Le nom de la colocation ne peut pas être vide."); return; }
+      if (names.some(function(n){ return !n; })) { toast("Chaque colocataire doit avoir un prénom."); return; }
+      var adminSelect = form.querySelector('select[name="admin"]');
+      var adminName = state.admin;
+      if (adminSelect) {
+        var oldIdx = state.people.indexOf(adminSelect.value);
+        adminName = oldIdx !== -1 ? names[oldIdx] : adminSelect.value;
+      }
+      performAction(function(st){ st.house = houseName; st.people = names; st.admin = adminName; });
+      ui.settingsOpen = false;
+      return;
+    }
+  }
+
+  function onClick(e){
+    var btn = e.target.closest("[data-action]");
+    if (!btn || btn.tagName === "FORM") return;
+    var action = btn.getAttribute("data-action");
+
+    if (action === "retry-load") {
+      loadError = "";
+      renderAll();
+      loadRemote();
+      return;
+    }
+    if (action === "mark-done") {
+      var wk = btn.getAttribute("data-week");
+      performAction(function(st){
+        st.weeks[wk] = { status:"pending_validation", doneBy: assignedFor(wk, st), date: todayISO() };
+      });
+      return;
+    }
+    if (action === "validate-done") {
+      var vwk = btn.getAttribute("data-week");
+      performAction(function(st){
+        var existing = st.weeks[vwk];
+        if (!existing || existing.status !== "pending_validation") return;
+        if (!moi || existing.doneBy === moi) return;
+        st.weeks[vwk] = { status:"done", doneBy: existing.doneBy, date: existing.date, validatedBy: moi, validatedAt: todayISO() };
+      });
+      return;
+    }
+    if (action === "admin-validate") {
+      if (moi !== state.admin) { toast("Seul·e l’administrateur·rice peut valider directement."); return; }
+      var awk = btn.getAttribute("data-week");
+      performAction(function(st){
+        if (moi !== st.admin) return;
+        var existing = st.weeks[awk];
+        var doneBy = (existing && existing.doneBy) || assignedFor(awk, st);
+        var doneDate = (existing && existing.date) || todayISO();
+        st.weeks[awk] = { status:"done", doneBy: doneBy, date: doneDate, validatedBy: moi, validatedAt: todayISO() };
+      });
+      return;
+    }
+    if (action === "admin-unvalidate") {
+      if (moi !== state.admin) { toast("Seul·e l’administrateur·rice peut dévalider."); return; }
+      var uwk = btn.getAttribute("data-week");
+      performAction(function(st){
+        if (moi !== st.admin) return;
+        var existing = st.weeks[uwk];
+        if (!existing || existing.status !== "done") return;
+        st.weeks[uwk] = { status:"pending_validation", doneBy: existing.doneBy, date: existing.date };
+      });
+      return;
+    }
+    if (action === "open-swap") {
+      ui.swapOpenFor = btn.getAttribute("data-week");
+      renderAll();
+      return;
+    }
+    if (action === "cancel-swap") {
+      ui.swapOpenFor = null;
+      renderAll();
+      return;
+    }
+    if (action === "settle-chore-debt") {
+      var id = btn.getAttribute("data-id");
+      performAction(function(st){
+        st.choreDebts.forEach(function(d){ if (d.id === id) { d.settled = true; d.settledAt = todayISO(); } });
+      });
+      return;
+    }
+    if (action === "delete-expense") {
+      var eid = btn.getAttribute("data-id");
+      if (!confirm("Supprimer cette dépense ?")) return;
+      performAction(function(st){
+        st.ledger = st.ledger.filter(function(e){ return e.id !== eid; });
+      });
+      if (ui.editingExpenseId === eid) ui.editingExpenseId = null;
+      return;
+    }
+    if (action === "edit-expense") {
+      ui.editingExpenseId = btn.getAttribute("data-id");
+      renderAll();
+      var ef = document.getElementById("expense-form");
+      if (ef) ef.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    if (action === "cancel-edit-expense") {
+      ui.editingExpenseId = null;
+      renderAll();
+      return;
+    }
+    if (action === "settle-balance") {
+      var from = btn.getAttribute("data-from"), to = btn.getAttribute("data-to"), amount = parseFloat(btn.getAttribute("data-amount"));
+      performAction(function(st){
+        st.ledger.push({ id: uid(), type:"settlement", from: from, to: to, amount: amount, date: todayISO() });
+      });
+      return;
+    }
+    if (action === "toggle-settings") {
+      ui.settingsOpen = !ui.settingsOpen;
+      renderAll();
+      return;
+    }
+    if (action === "pick-existing") {
+      var picked = document.getElementById("join-pick").value;
+      setMoi(picked);
+      renderAll();
+      return;
+    }
+    if (action === "switch-me") {
+      setMoi(null);
+      renderAll();
+      return;
+    }
+    if (action === "approve-request") {
+      var reqId = btn.getAttribute("data-id");
+      if (moi !== state.admin) { toast("Seul·e l’administrateur·rice peut valider une inscription."); return; }
+      performAction(function(st){
+        if (moi !== st.admin) return;
+        var reqIdx = -1;
+        st.joinRequests.forEach(function(r,i){ if (r.id === reqId) reqIdx = i; });
+        if (reqIdx === -1) return;
+        var reqName = st.joinRequests[reqIdx].name;
+        if (st.people.length < MAX_PEOPLE && st.people.indexOf(reqName) === -1) st.people.push(reqName);
+        st.joinRequests.splice(reqIdx, 1);
+      });
+      return;
+    }
+    if (action === "reject-request") {
+      var rejId = btn.getAttribute("data-id");
+      if (moi !== state.admin) { toast("Seul·e l’administrateur·rice peut refuser une inscription."); return; }
+      performAction(function(st){
+        if (moi !== st.admin) return;
+        st.joinRequests = st.joinRequests.filter(function(r){ return r.id !== rejId; });
+      });
+      return;
+    }
+    if (action === "cancel-request") {
+      performAction(function(st){
+        st.joinRequests = st.joinRequests.filter(function(r){ return r.name !== moi; });
+      });
+      setMoi(null);
+      renderAll();
+      return;
+    }
+    if (action === "remove-person") {
+      var idx = parseInt(btn.getAttribute("data-index"), 10);
+      var pname = state.people[idx];
+      if (!confirm("Retirer " + pname + " de " + state.house + " ? Son historique (dettes, dépenses) est conservé.")) return;
+      performAction(function(st){ st.people = st.people.filter(function(p,i){ return i !== idx; }); });
+      if (moi === pname) setMoi(null);
+      return;
+    }
+  }
+
+  function setMoi(name){
+    moi = name || null;
+    try { if (moi) localStorage.setItem("roulement_moi", moi); else localStorage.removeItem("roulement_moi"); } catch (err) {}
+  }
+
+  document.addEventListener("submit", onSubmit);
+  document.addEventListener("click", onClick);
+  document.addEventListener("change", function(e){
+    var form = e.target.closest("#expense-form");
+    if (!form) return;
+    if (e.target.name === "splitMode" || e.target.name === "split") updateSplitUI(form);
+  });
+  document.addEventListener("input", function(e){
+    var form = e.target.closest("#expense-form");
+    if (!form) return;
+    if (e.target.id === "exp-amount" || e.target.classList.contains("split-value")) {
+      var modeInput = form.querySelector('input[name="splitMode"]:checked');
+      if (modeInput) updateSplitHint(form, modeInput.value);
+    }
+  });
+
+  /* ---------- init ---------- */
+  renderAll();
+  if (API_URL) {
+    loadRemote();
+    setInterval(function(){ if (!document.hidden) loadRemote(); }, 15000);
+    document.addEventListener("visibilitychange", function(){ if (!document.hidden) loadRemote(); });
+  }
+
+})();
+</script>
